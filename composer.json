@@ -1,0 +1,31 @@
+{
+  "name": "syaritech/laravel-notify",
+  "type": "library",
+  "license": "MIT",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Saeed Yari",
+      "email": "saeedyari.work@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "orchestra/testbench": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Syaritech\\Notify\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Syaritech\\Notify\\NotifyServiceProvider"
+      ],
+      "aliases": {
+        "Calculator": "Syaritech\\Notify\\Facades\\Notify"
+      }
+    }
+  },
+  "minimum-stability": "dev"
+}
