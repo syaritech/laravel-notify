@@ -10,7 +10,8 @@
     }
   ],
   "require-dev": {
-    "orchestra/testbench": "^9.0"
+    "orchestra/testbench": "^9.0",
+    "phpstan/phpstan": "1.12.x-dev"
   },
   "autoload": {
     "psr-4": {

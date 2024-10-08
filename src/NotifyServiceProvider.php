@@ -5,8 +5,14 @@ namespace Syaritech\Notify;
 use Illuminate\Support\ServiceProvider;
 use Syaritech\Notify\Facades\Notify;
 
+/**
+ *
+ */
 class NotifyServiceProvider extends ServiceProvider
 {
+    /**
+     * @return void
+     */
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/notify.php', 'notify');
@@ -16,6 +22,9 @@ class NotifyServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * @return void
+     */
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
