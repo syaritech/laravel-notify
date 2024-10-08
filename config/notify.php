@@ -1,12 +1,14 @@
 <?php
 
+use Syaritech\Notify\Channels\Kavenegar;
+
 return [
     'channels' => [
         'kavenegar' => [
-            'class' => '',
-            'base_uri' => env('KAVENEGAR_BASE_URI', 'https://api.kavenegar.com'),
-            'sender' => env('KAVENEGAR_SENDER', ''),
-            'key' => env('KAVENEGAR_API_KEY', ''),
+            'class' => Kavenegar::class,
+            'gateway' => env('NOTIFY_KAVENEGAR_GATEWAY', 'https://api.kavenegar.com'),
+            'sender' => env('NOTIFY_KAVENEGAR_SENDER', ''),
+            'key' => env('NOTIFY_KAVENEGAR_API_KEY', ''),
         ]
     ]
 ];

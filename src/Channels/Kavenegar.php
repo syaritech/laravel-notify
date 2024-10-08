@@ -29,12 +29,12 @@ class Kavenegar implements AdapterInterface
      */
     public function __construct()
     {
-        $url = config('notify.channels.kavenegar.base_uri');
+        $url = config('notify.channels.kavenegar.gateway');
         $key = config('notify.channels.kavenegar.key');
         $sender = config('notify.channels.kavenegar.sender');
 
         if (!$url) {
-            throw new ConfigurationException('Kavenegar base URI is not set');
+            throw new ConfigurationException('Kavenegar gateway URI is not set');
         }
         $this->url = $url;
 
