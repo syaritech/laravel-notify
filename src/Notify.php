@@ -100,25 +100,28 @@ class Notify
     }
 
     /**
-     * @return void
+     * @return bool
      * @throws ChannelException
      */
-    public function send(): void
+    public function send(): bool
     {
+        $response = false;
         foreach ($this->channels as $channel) {
             $channelInstance = $this->getFreshInstanceOfChannel($channel);
             if (!empty($this->recipients)) {
                 foreach ($this->recipients as $recipient) {
-                    $channelInstance->send($recipient, $this->messages[0]);
+                    $response = $channelInstance->send($recipient, $this->messages[0]);
                 }
             } else {
                 if (!empty($this->messages)) {
                     foreach ($this->messages as $message) {
-                        $channelInstance->send($message->getReceptor(), $message->getContent());
+                        $response = $channelInstance->send($message->getReceptor(), $message->getContent());
                     }
                 }
             }
         }
+
+        return $response;
     }
 
     /**

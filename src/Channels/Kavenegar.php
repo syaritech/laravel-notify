@@ -58,11 +58,32 @@ class Kavenegar implements AdapterInterface
      */
     public function send(string $number, string $message): bool
     {
-        return Http::asForm()->post(sprintf("%s/v1/%s/sms/send.json", $this->url, $this->key), [
+        $response = Http::asForm()->post(sprintf("%s/v1/%s/sms/send.json", $this->url, $this->key), [
             'receptor' => $number,
             'message' => $message,
             'sender' => $this->sender,
-        ])->successful();
+        ]);
 
+        if ($response->status() == 401) {
+            return false;
+        }
+
+        if ($response->status() == 403) {
+            return false;
+        }
+
+        if ($response->status() == 418) {
+            return false;
+        }
+
+        $responseData = $response->json();
+        if (isset($responseData['entries'])) {
+            $status = $responseData['entries'][0]['status'];
+            if ($status == 1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -1,1 +1,1 @@
-# laravel-notification-provider
+# laravel-notify
