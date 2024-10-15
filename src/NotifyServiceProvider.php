@@ -3,7 +3,6 @@
 namespace Syaritech\Notify;
 
 use Illuminate\Support\ServiceProvider;
-use Syaritech\Notify\Facades\Notify;
 
 /**
  *
